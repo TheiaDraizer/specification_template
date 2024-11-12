@@ -2,7 +2,7 @@ import 'package:specification_template/testable/amulet.dart';
 import 'package:specification_template/testable/bonus.dart';
 import 'package:specification_template/specification_logic.dart';
 
-class BonusSpecification extends Specification {
+class BonusSpecification extends AbstractSpecification {
   final Bonus requiredBonus;
 
   BonusSpecification(this.requiredBonus);

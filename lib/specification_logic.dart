@@ -1,22 +1,22 @@
-abstract class Specification {
+abstract class AbstractSpecification {
   bool isSatisfiedBy(Object candidate);
 
-  Specification and(Specification other) {
+  AbstractSpecification and(AbstractSpecification other) {
     return AndSpecification(this, other);
   }
 
-  Specification or(Specification other) {
+  AbstractSpecification or(AbstractSpecification other) {
     return OrSpecification(this, other);
   }
 
-  Specification not() {
+  AbstractSpecification not() {
     return NotSpecification(this);
   }
 }
 
-class AndSpecification extends Specification {
-  final Specification first;
-  final Specification second;
+class AndSpecification extends AbstractSpecification {
+  final AbstractSpecification first;
+  final AbstractSpecification second;
 
   AndSpecification(this.first, this.second);
 
@@ -26,9 +26,9 @@ class AndSpecification extends Specification {
   }
 }
 
-class OrSpecification extends Specification {
-  final Specification first;
-  final Specification second;
+class OrSpecification extends AbstractSpecification {
+  final AbstractSpecification first;
+  final AbstractSpecification second;
 
   OrSpecification(this.first, this.second);
 
@@ -38,8 +38,8 @@ class OrSpecification extends Specification {
   }
 }
 
-class NotSpecification extends Specification {
-  final Specification spec;
+class NotSpecification extends AbstractSpecification {
+  final AbstractSpecification spec;
 
   NotSpecification(this.spec);
 

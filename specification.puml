@@ -39,10 +39,6 @@ class "specification_template::testable::bonus.dart::SpeedBonus" {
 
 "specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::SpeedBonus"
 
-abstract class "specification_template::testable::complex_specification.dart::Specifications" {
-  {static} +Specification amuletSpec()
-}
-
 class "specification_template::testable::amulet.dart::Amulet" {
   -String _nameValue
   -List<Bonus> _bonusesValue

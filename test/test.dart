@@ -6,17 +6,18 @@ import 'package:specification_template/testable/bonus_specification.dart';
 
 void main() {
   group('Specifications.amuletSpec', () {
-    Specification luckySpec = BonusSpecification(const LuckyBonus());
-    Specification aimSpec = BonusSpecification(const AimBonus());
-    Specification moneySpec = BonusSpecification(const MoneyBonus());
-    Specification speedSpec = BonusSpecification(const SpeedBonus());
-    Specification healthSpec = BonusSpecification(const HealthBonus());
-    Specification staminaSpec = BonusSpecification(const StaminaBonus());
-    Specification moneyOrLuckySpec = luckySpec.or(moneySpec);
-    Specification noFullBodySpec =
+    AbstractSpecification luckySpec = BonusSpecification(const LuckyBonus());
+    AbstractSpecification aimSpec = BonusSpecification(const AimBonus());
+    AbstractSpecification moneySpec = BonusSpecification(const MoneyBonus());
+    AbstractSpecification speedSpec = BonusSpecification(const SpeedBonus());
+    AbstractSpecification healthSpec = BonusSpecification(const HealthBonus());
+    AbstractSpecification staminaSpec =
+        BonusSpecification(const StaminaBonus());
+    AbstractSpecification moneyOrLuckySpec = luckySpec.or(moneySpec);
+    AbstractSpecification noFullBodySpec =
         speedSpec.and(healthSpec).and(staminaSpec).and(aimSpec).not();
     // Specification all
-    Specification finalSpec = noFullBodySpec.and(moneyOrLuckySpec);
+    AbstractSpecification finalSpec = noFullBodySpec.and(moneyOrLuckySpec);
 
     test('should only satisfy amulet with LuckyBonus or MoneyBonus', () {
       Amulet amulet = const Amulet('2', [HealthBonus(), StaminaBonus()]);
