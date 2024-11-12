@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:specification_template/testable/amulet.dart';
-import 'package:specification_template/testable/bonus.dart';
-
 abstract class Specification {
   bool isSatisfiedBy(Object candidate);
 
