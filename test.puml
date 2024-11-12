@@ -1,0 +1,95 @@
+@startuml
+set namespaceSeparator ::
+
+class "specification_template::testable::bonus.dart::Bonus" {
+}
+
+class "specification_template::testable::bonus.dart::LuckyBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::LuckyBonus"
+
+class "specification_template::testable::bonus.dart::ExperienceBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::ExperienceBonus"
+
+class "specification_template::testable::bonus.dart::MoneyBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::MoneyBonus"
+
+class "specification_template::testable::bonus.dart::HealthBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::HealthBonus"
+
+class "specification_template::testable::bonus.dart::StaminaBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::StaminaBonus"
+
+class "specification_template::testable::bonus.dart::AimBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::AimBonus"
+
+class "specification_template::testable::bonus.dart::SpeedBonus" {
+}
+
+"specification_template::testable::bonus.dart::Bonus" <|-- "specification_template::testable::bonus.dart::SpeedBonus"
+
+abstract class "specification_template::testable::complex_specification.dart::Specifications" {
+  {static} +Specification amuletSpec()
+}
+
+class "specification_template::testable::amulet.dart::Amulet" {
+  -String _nameValue
+  -List<Bonus> _bonusesValue
+  +String getName
+  +List<Bonus> getFeatures
+}
+
+class "specification_template::testable::bonus_specification.dart::BonusSpecification" {
+  +Bonus requiredBonus
+  +bool isSatisfiedBy()
+}
+
+"specification_template::testable::bonus_specification.dart::BonusSpecification" o-- "specification_template::testable::bonus.dart::Bonus"
+"specification_template::specification_logic.dart::Specification" <|-- "specification_template::testable::bonus_specification.dart::BonusSpecification"
+
+abstract class "specification_template::specification_logic.dart::Specification" {
+  +bool isSatisfiedBy()
+  +Specification and()
+  +Specification or()
+  +Specification not()
+}
+
+class "specification_template::specification_logic.dart::AndSpecification" {
+  +Specification first
+  +Specification second
+  +bool isSatisfiedBy()
+}
+
+"specification_template::specification_logic.dart::AndSpecification" o-- "specification_template::specification_logic.dart::Specification"
+"specification_template::specification_logic.dart::Specification" <|-- "specification_template::specification_logic.dart::AndSpecification"
+
+class "specification_template::specification_logic.dart::OrSpecification" {
+  +Specification first
+  +Specification second
+  +bool isSatisfiedBy()
+}
+
+"specification_template::specification_logic.dart::OrSpecification" o-- "specification_template::specification_logic.dart::Specification"
+"specification_template::specification_logic.dart::Specification" <|-- "specification_template::specification_logic.dart::OrSpecification"
+
+class "specification_template::specification_logic.dart::NotSpecification" {
+  +Specification spec
+  +bool isSatisfiedBy()
+}
+
+"specification_template::specification_logic.dart::NotSpecification" o-- "specification_template::specification_logic.dart::Specification"
+"specification_template::specification_logic.dart::Specification" <|-- "specification_template::specification_logic.dart::NotSpecification"
+
+
+@enduml

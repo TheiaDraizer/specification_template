@@ -1,30 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:specification_template/amulet.dart';
-import 'package:specification_template/bonus.dart';
+import 'package:specification_template/testable/amulet.dart';
+import 'package:specification_template/testable/bonus.dart';
 
-mixin Specification {
+abstract class Specification {
   bool isSatisfiedBy(Object candidate);
 
-  Specification and(Specification other);
-  Specification or(Specification other);
-  Specification not();
-}
-
-class BonusSpecification extends AbstractSpecification {
-  final Bonus requiredBonus;
-
-  BonusSpecification(this.requiredBonus);
-
-  @override
-  bool isSatisfiedBy(Object candidate) {
-    if ((candidate is Amulet)) {
-      return candidate.getFeatures.contains(requiredBonus);
-    }
-    return false;
-  }
-}
-
-abstract class AbstractSpecification with Specification {
   Specification and(Specification other) {
     return AndSpecification(this, other);
   }
@@ -38,8 +18,7 @@ abstract class AbstractSpecification with Specification {
   }
 }
 
-/* ------------------------------------ . ----------------------------------- */
-class AndSpecification extends AbstractSpecification {
+class AndSpecification extends Specification {
   final Specification first;
   final Specification second;
 
@@ -51,7 +30,7 @@ class AndSpecification extends AbstractSpecification {
   }
 }
 
-class OrSpecification extends AbstractSpecification {
+class OrSpecification extends Specification {
   final Specification first;
   final Specification second;
 
@@ -63,7 +42,7 @@ class OrSpecification extends AbstractSpecification {
   }
 }
 
-class NotSpecification extends AbstractSpecification {
+class NotSpecification extends Specification {
   final Specification spec;
 
   NotSpecification(this.spec);

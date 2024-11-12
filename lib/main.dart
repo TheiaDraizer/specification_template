@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:specification_template/amulet.dart';
-import 'package:specification_template/bonus.dart';
+import 'package:specification_template/testable/amulet.dart';
+import 'package:specification_template/testable/bonus.dart';
 import 'package:specification_template/specification_logic.dart';
-import 'package:specification_template/specifications.dart';
+import 'package:specification_template/testable/complex_specification.dart';
+
+//! Domain-driven design, specification, runtime evaluation
 
 void main() {
   Amulet amulet1 = const Amulet('1', [LuckyBonus(), AimBonus(), SpeedBonus()]);

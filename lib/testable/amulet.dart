@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:specification_template/bonus.dart';
+import 'package:specification_template/testable/bonus.dart';
 
-//once per month one gift dropped
-//specification to check new feature combinations
-
-@immutable
 class Amulet {
   const Amulet(String name, List<Bonus> bonuses)
       : _nameValue = name,
